@@ -1,0 +1,17 @@
+# This is the Docker file for nginx
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: ng1_reverse_proxy
+    volumes:
+      - ./data:/etc/nginx
+
+    ports:
+      - "80:80"
+
+networks:
+  default:
+    name: docker_net
+

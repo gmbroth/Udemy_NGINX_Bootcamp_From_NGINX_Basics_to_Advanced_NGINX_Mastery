@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  apache:
+    image: httpd:latest
+    container_name: reverse_proxy_example
+    hostname: apacheserver1
+
+    # We removed the port configuration from the previous example so that the web server
+    # will *not* be accessible from the internet but only accessible via the reverse proxy
+    
+    volumes:
+    - ./data:/usr/local/apache2/htdocs
+
+#networks:
+#  default:
+#    external:
+#      name: docker_net
+# WARN[0000] network default: network.external.name is deprecated in favor of network.name
+# network docker_net declared as external, but could not be found
+        
+networks:
+  default:
+    name: docker_net
+
